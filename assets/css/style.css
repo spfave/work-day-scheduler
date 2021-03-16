@@ -1,5 +1,6 @@
+/* TAGS */
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 16px;
   line-height: 1;
 }
@@ -13,6 +14,20 @@ textarea {
   padding: 10px;
 }
 
+/* UTILITY CLASSES */
+.wrap-max-width {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.wrap-v-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+/* BOOTSTRAP CUSTOMIZATION */
 .jumbotron {
   text-align: center;
   background-color: transparent;
@@ -31,7 +46,7 @@ textarea {
 }
 
 .row {
-  white-space: pre-wrap;
+  /* white-space: pre-wrap; */
   height: 80px;
   border-top: 1px solid white;
 }
@@ -55,6 +70,10 @@ textarea {
 .future {
   background-color: #77dd77;
   color: white;
+}
+
+.btn {
+  border: none;
 }
 
 .saveBtn {
