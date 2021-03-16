@@ -28,6 +28,7 @@ textarea {
 }
 
 /* BOOTSTRAP CUSTOMIZATION */
+/* Header */
 .jumbotron {
   text-align: center;
   background-color: transparent;
@@ -36,19 +37,24 @@ textarea {
   border-bottom: 10px solid black;
 }
 
-.description {
+/* .description {
   white-space: pre-wrap;
-}
+} */
 
-.time-block {
+/* .time-block {
   text-align: center;
   border-radius: 15px;
-}
+} */
 
+/* Time Block */
 .row {
   /* white-space: pre-wrap; */
   height: 80px;
   border-top: 1px solid white;
+}
+
+.width-80 {
+  width: 80px;
 }
 
 .hour {
@@ -70,10 +76,6 @@ textarea {
 .future {
   background-color: #77dd77;
   color: white;
-}
-
-.btn {
-  border: none;
 }
 
 .saveBtn {
