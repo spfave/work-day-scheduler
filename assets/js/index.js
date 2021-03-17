@@ -1,11 +1,14 @@
 // DOM SELECTORS
+const dayDate = $("#current-day");
 const schedule = $("#day-schedule");
 
 // FUNCTIONS
 // Get current date and display to header
 const updateDate = () => {
-  const today = moment().format("dddd, MMMM D, YYYY");
-  $("#currentDay").text(today);
+  const today = moment();
+  dayDate.text(today.format("dddd, MMMM D, YYYY"));
+  dayDate.data("date", today.format("YYYYMMDD"));
+  // console.log(dayDate.data("date"));
 };
 
 // Update time block theme
