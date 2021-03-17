@@ -21,10 +21,18 @@ const saveScheduleItem = () => {
 
 // Handle schedule item save
 const handleSaveScheduleItem = (event) => {
-  // console.log($(event.target));
+  element = $(event.target).parent();
 
-  const textArea = $(event.target).parent().prev().children().first();
-  console.log(textArea.val());
+  // Evaluate hour block and task description of task to save
+  const hour = element.siblings().eq(0).children()[0].dataset.hour;
+  const task = element.prev().children().first().val();
+
+  // Create schedule item object
+  const scheduleItem = { [hour]: task };
+  console.log(scheduleItem);
+
+  // Call save function for schedule item
+  // saveScheduleItem(scheduleItem);
 };
 
 // EVENT LISTENERS
