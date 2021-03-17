@@ -30,7 +30,7 @@ const saveScheduleItem = (time, task) => {
 
 // Handle schedule item save
 const handleSaveScheduleItem = (event) => {
-  element = $(event.target).parent();
+  element = $(event.target).closest("div");
 
   // Evaluate hour block and task description of task to save
   const hour = element.siblings().eq(0).children()[0].dataset.hour;
