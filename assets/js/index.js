@@ -25,7 +25,7 @@ const saveScheduleItem = (time, task) => {
   daySchedule[time] = task;
 
   // Save updated day schedule to local storage
-  localStorage.setItem("YYYYMMDD", JSON.stringify(daySchedule));
+  localStorage.setItem(dayDate.data("date"), JSON.stringify(daySchedule));
 };
 
 // Handle schedule item save
