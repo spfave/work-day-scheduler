@@ -15,8 +15,14 @@ const updateTimeTheme = () => {};
 const loadDaySchedule = () => {};
 
 // Save schedule item to local storage
-const saveScheduleItem = () => {
-  // localStorage.setItem();
+const saveScheduleItem = (time, task) => {
+  // Load day schedule
+  // const daySchedule = loadDaySchedule();
+  const daySchedule = {};
+  daySchedule[time] = task;
+
+  // Save updated day schedule to local storage
+  localStorage.setItem("YYYYMMDD", JSON.stringify(daySchedule));
 };
 
 // Handle schedule item save
@@ -28,11 +34,10 @@ const handleSaveScheduleItem = (event) => {
   const task = element.prev().children().first().val();
 
   // Create schedule item object
-  const scheduleItem = { [hour]: task };
-  console.log(scheduleItem);
+  // const scheduleItem = { [hour]: task };
 
   // Call save function for schedule item
-  // saveScheduleItem(scheduleItem);
+  saveScheduleItem(hour, task);
 };
 
 // EVENT LISTENERS
