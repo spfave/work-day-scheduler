@@ -2,6 +2,9 @@
 const dayDate = $("#current-day");
 const daySchedule = $("#day-schedule");
 
+// VARIABLES
+let currentHour = moment().get("hour");
+
 // FUNCTIONS
 // Get current date and display to header
 const updateDate = () => {
@@ -18,9 +21,6 @@ const createDaySchedule = (schedule) => {
     alert("Schedule end time must be later than schedule start time");
     return;
   }
-
-  // Determine current hour
-  currentHour = moment().get("hour");
 
   // Create hour blocks for schedule and render to page
   for (let hour = schedule.startTime; hour < schedule.endTime; hour++) {
@@ -116,12 +116,19 @@ const handleSaveScheduleItem = (event) => {
   const hour = element.siblings().eq(0).children()[0].dataset.hour;
   const task = element.prev().children().first().val();
 
+  // if task is non-empty string call save function for schedule item
+  // if (task) {
+  //   console.log("test");
+  // }
+
   // Call save function for schedule item
   saveScheduleItem(hour, task);
 };
 
 // TODO Starts time monitor
-const timeMonitor = () => {};
+const timeMonitor = () => {
+  // timeIncrementor = setInterval(,1000);
+};
 
 // EVENT LISTENERS
 daySchedule.on("click", ".btn-save", handleSaveScheduleItem);
@@ -130,6 +137,7 @@ daySchedule.on("click", ".btn-save", handleSaveScheduleItem);
 // After page load
 $(() => {
   updateDate();
+  timeMonitor();
   createDaySchedule({ startTime: 9, endTime: 18 });
   displayDaySchedule();
 
