@@ -119,7 +119,7 @@ const handleSaveScheduleItem = (event) => {
   // if task is non-empty string call save function for schedule item
   // if (task) {
   //   console.log("test");
-  // }
+  // } else {remove entry?}
 
   // Call save function for schedule item
   saveScheduleItem(hour, task);
@@ -127,7 +127,16 @@ const handleSaveScheduleItem = (event) => {
 
 // TODO Starts time monitor
 const timeMonitor = () => {
-  // timeIncrementor = setInterval(,1000);
+  // On time interval check if hour has changed
+  timeIncrementor = setInterval(() => {
+    const hour = moment().get("hour");
+
+    // if change in hour - update current hour and update schedule block theme
+    if (hour !== currentHour) {
+      currentHour = hour;
+      updateScheduleTheme();
+    }
+  }, 5000);
 };
 
 // EVENT LISTENERS
