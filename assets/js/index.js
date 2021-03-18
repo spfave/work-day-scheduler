@@ -59,11 +59,25 @@ const createDaySchedule = (schedule) => {
   }
 };
 
-// TODO Render schedule tasks to screen
-const displayDaySchedule = () => {};
+// Render schedule tasks to screen
+const displayDaySchedule = () => {
+  // Load day schedule
+  const daySchedule = loadDaySchedule();
 
-// TODO Modify day schedule time block to include
-const displayScheduleTask = () => {};
+  // Render schedule tasks to schedule
+  for (const [hour, task] of Object.entries(daySchedule)) {
+    // console.log(hour);
+    // console.log(task);
+    displayScheduleTask(hour, task);
+  }
+};
+
+// Modify day schedule time block to include
+const displayScheduleTask = (hour, task) => {
+  const hourBlock = $(`p[data-hour="${hour}"]`).parent();
+  const taskInput = hourBlock.next().children().first();
+  taskInput.val(task);
+};
 
 // TODO Update time block theme
 const updateScheduleTheme = () => {};
@@ -121,8 +135,9 @@ daySchedule.on("click", ".btn-save", handleSaveScheduleItem);
 // After page load
 $(() => {
   updateDate();
+  createDaySchedule({ startTime: 9, endTime: 18 });
+  displayDaySchedule();
 
   // TESTING
-  createDaySchedule({ startTime: 9, endTime: 18 });
   // loadDaySchedule();
 });
