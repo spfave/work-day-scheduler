@@ -4,6 +4,10 @@ const daySchedule = $("#day-schedule");
 
 // VARIABLES
 let currentHour = moment().get("hour");
+let schedule = {
+  startTime: 9, // 9 am
+  endTime: 18, // 6 pm
+};
 
 // FUNCTIONS
 // Get current date and display to header
@@ -147,7 +151,7 @@ daySchedule.on("click", ".btn-save", handleSaveScheduleItem);
 $(() => {
   updateDate();
   timeMonitor();
-  createDaySchedule({ startTime: 9, endTime: 18 });
+  createDaySchedule(schedule);
   displayDaySchedule();
 
   // TESTING
