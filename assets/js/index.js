@@ -66,8 +66,6 @@ const displayDaySchedule = () => {
 
   // Render schedule tasks to schedule
   for (const [hour, task] of Object.entries(daySchedule)) {
-    // console.log(hour);
-    // console.log(task);
     displayScheduleTask(hour, task);
   }
 };
@@ -117,9 +115,6 @@ const handleSaveScheduleItem = (event) => {
   // Evaluate hour block and task description of task to save
   const hour = element.siblings().eq(0).children()[0].dataset.hour;
   const task = element.prev().children().first().val();
-
-  // Create schedule item object
-  // const scheduleItem = { [hour]: task };
 
   // Call save function for schedule item
   saveScheduleItem(hour, task);
