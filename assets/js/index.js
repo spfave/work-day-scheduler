@@ -6,7 +6,7 @@ const schedule = $("#day-schedule");
 // Get current date and display to header
 const updateDate = () => {
   const today = moment();
-  dayDate.text(today.format("dddd, MMMM D, YYYY"));
+  dayDate.text(today.format("dddd, MMMM Do, YYYY"));
   dayDate.data("date", today.format("YYYYMMDD"));
   // console.log(dayDate.data("date"));
 };
@@ -15,13 +15,27 @@ const updateDate = () => {
 const updateTimeTheme = () => {};
 
 // Load saved schedule items from local storage
-const loadDaySchedule = () => {};
+const loadDaySchedule = () => {
+  // load day schedule from local storage
+  let daySchedule = localStorage.getItem(dayDate.data("date"));
+
+  // if day schedule does not exist or is empty object return empty object
+  // else return parsed day schedule
+  if (daySchedule === null || $.isEmptyObject(daySchedule)) {
+    daySchedule = {};
+  } else {
+    daySchedule = JSON.parse(daySchedule);
+  }
+
+  return daySchedule;
+};
 
 // Save schedule item to local storage
 const saveScheduleItem = (time, task) => {
   // Load day schedule
-  // const daySchedule = loadDaySchedule();
-  const daySchedule = {};
+  const daySchedule = loadDaySchedule();
+
+  // Add task to schedule
   daySchedule[time] = task;
 
   // Save updated day schedule to local storage
@@ -50,4 +64,7 @@ schedule.on("click", ".btn-save", handleSaveScheduleItem);
 // After page load
 $(() => {
   updateDate();
+
+  // TESTING
+  loadDaySchedule();
 });
