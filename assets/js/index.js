@@ -11,8 +11,17 @@ const updateDate = () => {
   // console.log(dayDate.data("date"));
 };
 
-// Update time block theme
-const updateTimeTheme = () => {};
+// TODO Create and render blank day schedule hour blocks to window
+const createDaySchedule = () => {};
+
+// TODO Render schedule tasks to screen
+const displayDaySchedule = () => {};
+
+// TODO Modify day schedule time block to include
+const displayScheduleTask = () => {};
+
+// TODO Update time block theme
+const updateScheduleTheme = () => {};
 
 // Load saved schedule items from local storage
 const loadDaySchedule = () => {
