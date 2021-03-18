@@ -11,7 +11,7 @@ const updateDate = () => {
   // console.log(dayDate.data("date"));
 };
 
-// TODO Create and render blank day schedule hour blocks to page
+// Create and render blank day schedule hour blocks to page
 const createDaySchedule = (schedule) => {
   // Data entry validation
   if (schedule.startTime >= schedule.endTime) {
@@ -110,6 +110,9 @@ const handleSaveScheduleItem = (event) => {
   // Call save function for schedule item
   saveScheduleItem(hour, task);
 };
+
+// TODO Starts time monitor
+const timeMonitor = () => {};
 
 // EVENT LISTENERS
 daySchedule.on("click", ".btn-save", handleSaveScheduleItem);
