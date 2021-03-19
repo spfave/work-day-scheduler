@@ -15,7 +15,9 @@ const updateDate = () => {
   const today = moment();
   dayDate.text(today.format("dddd, MMMM Do, YYYY"));
   dayDate.data("date", today.format("YYYYMMDD"));
-  // console.log(dayDate.data("date"));
+
+  // Create new schedule
+  createDaySchedule(schedule);
 };
 
 // Create and render blank day schedule hour blocks to page
@@ -25,6 +27,9 @@ const createDaySchedule = (schedule) => {
     alert("Schedule end time must be later than schedule start time");
     return;
   }
+
+  // Remove old calendar
+  daySchedule.html("");
 
   // Create hour blocks for schedule and render to page
   for (let hour = schedule.startTime; hour < schedule.endTime; hour++) {
@@ -177,11 +182,9 @@ daySchedule.on("click", ".btn-save", handleSaveScheduleItem);
 // After page load
 $(() => {
   updateDate();
-  timeMonitor();
-  createDaySchedule(schedule);
   displayDaySchedule();
-  updateScheduleTheme();
-
-  // TESTING
-  // loadDaySchedule();
+  timeMonitor();
+  // createDaySchedule(schedule);
+  // displayDaySchedule();
+  // updateScheduleTheme();
 });
