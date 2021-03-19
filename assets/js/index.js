@@ -5,8 +5,8 @@ const daySchedule = $("#day-schedule");
 // VARIABLES
 let currentHour = moment().get("hour");
 let schedule = {
-  startTime: 9, // 9 am
-  endTime: 18, // 6 pm
+  startTime: 0, // 9 am
+  endTime: 24, // 6 pm
 };
 
 // FUNCTIONS
@@ -30,7 +30,7 @@ const createDaySchedule = (schedule) => {
   for (let hour = schedule.startTime; hour < schedule.endTime; hour++) {
     // Create empty div and add 'row' class
     const scheduleBlock = $("<div>");
-    scheduleBlock.addClass("row");
+    scheduleBlock.addClass("row schedule-row");
 
     //Define div inner HTML content
     const blockTime = moment(hour, "H").format("h a");
@@ -49,18 +49,21 @@ const createDaySchedule = (schedule) => {
     `);
 
     // Get schedule hour block task description div and add appropriate time block style
-    const blockDesc = scheduleBlock.children(".task-desc");
-    if (hour < currentHour) {
-      blockDesc.addClass("past");
-    } else if (hour === currentHour) {
-      blockDesc.addClass("present");
-    } /** hour > currentHour */ else {
-      blockDesc.addClass("future");
-    }
+    // const blockDesc = scheduleBlock.children(".task-desc");
+    // if (hour < currentHour) {
+    //   blockDesc.addClass("past");
+    // } else if (hour === currentHour) {
+    //   blockDesc.addClass("present");
+    // } /** hour > currentHour */ else {
+    //   blockDesc.addClass("future");
+    // }
 
     // Append schedule block to day schedule
     daySchedule.append(scheduleBlock);
   }
+
+  // Call function to set schedule block theme
+  updateScheduleTheme();
 };
 
 // Render schedule tasks to screen
@@ -82,7 +85,25 @@ const displayScheduleTask = (hour, task) => {
 };
 
 // TODO Update time block theme
-const updateScheduleTheme = () => {};
+const updateScheduleTheme = () => {
+  // Find all schedule blocks in day schedule
+  scheduleBlocks = daySchedule.children(".schedule-row");
+
+  // Loop over schedule blocks and set theme
+  for (const scheduleBlock of scheduleBlocks) {
+    const blockHour = $(scheduleBlock).find("[data-hour]").data("hour");
+    const blockDesc = $(scheduleBlock).children(".task-desc");
+
+    // Style schedule task description block with appropriate theme
+    if (blockHour < currentHour) {
+      blockDesc.addClass("past").removeClass("present");
+    } else if (blockHour === currentHour) {
+      blockDesc.addClass("present").removeClass("future");
+    } /** blockHour > currentHour */ else {
+      blockDesc.addClass("future").removeClass("past");
+    }
+  }
+};
 
 // Load saved schedule items from local storage
 const loadDaySchedule = () => {
@@ -137,6 +158,7 @@ const timeMonitor = () => {
 
     // if change in hour - update current hour and update schedule block theme
     if (hour !== currentHour) {
+      // TODO handle midnight
       currentHour = hour;
       updateScheduleTheme();
     }
@@ -153,6 +175,7 @@ $(() => {
   timeMonitor();
   createDaySchedule(schedule);
   displayDaySchedule();
+  updateScheduleTheme();
 
   // TESTING
   // loadDaySchedule();
