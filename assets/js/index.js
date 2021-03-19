@@ -84,7 +84,7 @@ const displayScheduleTask = (hour, task) => {
   taskInput.val(task);
 };
 
-// TODO Update time block theme
+// Update time block theme
 const updateScheduleTheme = () => {
   // Find all schedule blocks in day schedule
   scheduleBlocks = daySchedule.children(".schedule-row");
@@ -150,7 +150,7 @@ const handleSaveScheduleItem = (event) => {
   saveScheduleItem(hour, task);
 };
 
-// TODO Starts time monitor
+// Starts time monitor
 const timeMonitor = () => {
   // On time interval check if hour has changed
   timeIncrementor = setInterval(() => {
@@ -158,7 +158,12 @@ const timeMonitor = () => {
 
     // if change in hour - update current hour and update schedule block theme
     if (hour !== currentHour) {
-      // TODO handle midnight
+      // Handle midnight
+      if (hour === 0) {
+        updateDate();
+      }
+
+      // Update current hour variable and update schedule block themes
       currentHour = hour;
       updateScheduleTheme();
     }
