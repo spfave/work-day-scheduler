@@ -17,7 +17,7 @@ Work Day Scheduler is built as a single page web application and has its schedul
 ## **[Live Application](https://spfave.github.io/work-day-scheduler/)**
 
 Demo interaction \
-![Demo work day scheduler]()
+![Demo work day scheduler](./assets/img/demoshot_workday_scheduler.png)
 
 
 &nbsp;
