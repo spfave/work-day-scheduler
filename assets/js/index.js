@@ -159,9 +159,6 @@ const handleSaveScheduleTask = (event) => {
   } else {
     removeScheduleTask(hour);
   }
-
-  // Call save function for schedule task
-  // saveScheduleTask(hour, task);
 };
 
 // Starts time monitor
