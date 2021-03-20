@@ -131,6 +131,18 @@ const saveScheduleTask = (time, task) => {
   localStorage.setItem(dayDate.data("date"), JSON.stringify(scheduleTasks));
 };
 
+// Remove schedule task from schedule tasks
+const removeScheduleTask = (time) => {
+  // Load schedule tasks
+  const scheduleTasks = loadScheduleTasks();
+
+  // remove task from schedule
+  delete scheduleTasks[time];
+
+  // Save updated schedule tasks to local storage
+  localStorage.setItem(dayDate.data("date"), JSON.stringify(scheduleTasks));
+};
+
 // Handle schedule task save
 const handleSaveScheduleTask = (event) => {
   element = $(event.target).closest("div");
@@ -140,13 +152,16 @@ const handleSaveScheduleTask = (event) => {
   const task = element.prev().children().first().val();
 
   // if task is non-empty string - call save function for schedule task
-  // if (task) {
-  //   console.log("test");
-  //   saveScheduleTask(hour, task)
-  // } else {removeScheduleTask(hour);}
+  // else - remove task from schedule
+  if (task) {
+    console.log("test");
+    saveScheduleTask(hour, task);
+  } else {
+    removeScheduleTask(hour);
+  }
 
   // Call save function for schedule task
-  saveScheduleTask(hour, task);
+  // saveScheduleTask(hour, task);
 };
 
 // Starts time monitor
