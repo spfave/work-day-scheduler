@@ -5,8 +5,8 @@ const daySchedule = $("#day-schedule");
 // VARIABLES
 let currentHour = moment().get("hour");
 let schedule = {
-  startTime: 0, // 9 am
-  endTime: 24, // 6 pm
+  startTime: 9, // 9 am
+  endTime: 18, // 6 pm
 };
 
 // FUNCTIONS
