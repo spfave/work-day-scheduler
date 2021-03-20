@@ -18,8 +18,9 @@ const updateDate = () => {
   dayDate.data("date", today.format("YYYYMMDD"));
   console.log(dayDate.data("date"));
 
-  // Create new schedule
+  // Create new schedule and display tasks
   createDaySchedule(schedule);
+  displayScheduleTasks();
 };
 
 // Create and render blank day schedule hour blocks to page
