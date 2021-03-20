@@ -16,6 +16,7 @@ const updateDate = () => {
   const today = moment();
   dayDate.text(today.format("dddd, MMMM Do, YYYY"));
   dayDate.data("date", today.format("YYYYMMDD"));
+  console.log(dayDate.data("date"));
 
   // Create new schedule
   createDaySchedule(schedule);
@@ -34,22 +35,22 @@ const createDaySchedule = (schedule) => {
 
   // Create hour blocks for schedule and render to page
   for (let hour = schedule.startTime; hour < schedule.endTime; hour++) {
-    // Create empty div and add 'row' class
+    // Create empty div and add class names
     const scheduleBlock = $("<div>");
     scheduleBlock.addClass("row schedule-row");
 
-    //Define div inner HTML content
+    // Define schedule block inner HTML content
     const blockTime = moment(hour, "H").format("h a");
     scheduleBlock.html(`
-      <div class="hour wrap-v-center width-80 pr-3">
-        <p class="text-right m-0" data-hour="${hour}">${blockTime}</p>
+      <div class="hour wrap-v-center width-80">
+        <p data-hour="${hour}">${blockTime}</p>
       </div>
 
       <div class="task-desc col p-0">
-        <textarea name="" class="w-100 h-100"></textarea>
+        <textarea></textarea>
       </div>
 
-      <div class="saveBtn wrap-v-center width-80 p-0">
+      <div class="saveBtn wrap-v-center width-80">
         <button class="btn btn-save h-100"><i class="fas fa-save"></i></button>
       </div>
     `);
@@ -174,6 +175,5 @@ daySchedule.on("click", ".btn-save", handleSaveScheduleTask);
 // After page load
 $(() => {
   updateDate();
-  displayScheduleTasks();
   timeMonitor();
 });
