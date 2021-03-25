@@ -154,7 +154,6 @@ const handleSaveScheduleTask = (event) => {
   // if task is non-empty string - call save function for schedule task
   // else - remove task from schedule
   if (task) {
-    console.log("test");
     saveScheduleTask(hour, task);
   } else {
     removeScheduleTask(hour);
